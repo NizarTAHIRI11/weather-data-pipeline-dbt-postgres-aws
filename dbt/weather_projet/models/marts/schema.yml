@@ -1,0 +1,108 @@
+version: 2
+
+models:
+  - name: dim_weather_stations
+    description: "Dimension contenant les métadonnées des stations amateurs Weather Underground."
+    columns:
+      - name: station_id
+        description: "Identifiant unique de la station amateur."
+        tests:
+          - not_null
+          - unique
+
+      - name: station_name
+        description: "Nom de la station météo."
+        tests:
+          - not_null
+
+      - name: latitude
+        description: "Latitude de la station."
+        tests:
+          - not_null
+
+      - name: longitude
+        description: "Longitude de la station."
+        tests:
+          - not_null
+
+      - name: source_network
+        description: "Réseau source de la station."
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['weather_underground']
+
+  - name: dim_weather_time
+    description: "Dimension temporelle utilisée pour les analyses par date, mois, année et heure."
+    columns:
+      - name: observation_datetime
+        description: "Date et heure de l'observation météo."
+        tests:
+          - not_null
+          - unique
+
+      - name: observation_date
+        description: "Date de l'observation."
+        tests:
+          - not_null
+
+      - name: year
+        description: "Année de l'observation."
+        tests:
+          - not_null
+
+      - name: month
+        description: "Mois de l'observation."
+        tests:
+          - not_null
+
+      - name: day
+        description: "Jour de l'observation."
+        tests:
+          - not_null
+
+      - name: hour
+        description: "Heure de l'observation."
+        tests:
+          - not_null
+
+  - name: fact_weather_observations
+    description: "Table de faits contenant les observations météorologiques harmonisées."
+    columns:
+      - name: weather_observation_id
+        description: "Clé technique unique de l'observation météo."
+        tests:
+          - not_null
+          - unique
+
+      - name: station_id
+        description: "Identifiant de la station météo."
+        tests:
+          - not_null
+
+      - name: observation_datetime
+        description: "Date et heure de l'observation."
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_weather_time')
+                field: observation_datetime
+
+      - name: source_network
+        description: "Réseau source de la donnée météo."
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['weather_underground', 'infoclimat']
+
+      - name: temperature_c
+        description: "Température en degrés Celsius."
+
+      - name: humidity_pct
+        description: "Humidité relative en pourcentage."
+
+      - name: pressure_hpa
+        description: "Pression atmosphérique en hPa."

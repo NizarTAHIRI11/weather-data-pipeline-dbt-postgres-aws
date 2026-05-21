@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: forecast2   # nom logique choisi par le développeur
+    database: greencoop
+    schema: RAW
+
+    tables:
+      - name: la_madeleine_weather
+      - name: ichtegem_weather
+      - name: infoclimat_weather

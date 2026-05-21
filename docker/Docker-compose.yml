@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+  postgres_p8:
+    image: postgres:17
+    container_name: postgres_p8
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=greencoop
+      - POSTGRES_PASSWORD=forecast2
+      - POSTGRES_DB=greencoop
+    networks:
+      - greennetworks
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  pgadmin_p8:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin_p8
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=greenandcoop@oc.fr
+      - PGADMIN_DEFAULT_PASSWORD=forecast2
+    networks:
+      - greennetworks
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+volumes:
+  postgres_data:
+  pgadmin_data:
+
+networks:
+  greennetworks:

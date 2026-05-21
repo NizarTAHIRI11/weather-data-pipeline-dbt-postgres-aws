@@ -1,0 +1,35 @@
+# Dossiers vides ou non techniques
+airbyte/
+airflow/
+aws/cloudwatch/
+aws/ecs/
+demo/
+docs/
+notebook/
+postgres/
+Presentation/
+screenshots/
+
+# Environnement Python
+venv/
+
+# Logs
+logs/
+dbt/logs/
+dbt/weather_projet/logs/
+
+# DBT compilé (généré auto)
+dbt/weather_projet/target/
+
+# Credentials sensibles
+.env
+*.env
+profiles.yml
+**/*.pem
+**/*.key
+
+# OS
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pycaws/rds/secret.txt
