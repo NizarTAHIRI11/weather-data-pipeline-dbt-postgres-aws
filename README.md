@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 # 🌦️ Weather Data Pipeline — DBT + PostgreSQL + AWS
 
-> **Projet 8 — Formation Data Engineer | OpenClassrooms**  
 > Pipeline ELT complet de collecte, transformation et stockage de données météorologiques multi-sources.
 
 ---
@@ -83,7 +81,7 @@ dim_weather_time
 ## 🏗️ Structure du projet
 
 ```
-Mission/
+weather-data-pipeline-dbt-postgres-aws/
 ├── aws/
 │   └── rds/
 │       ├── init_schema.sql       # Création des tables RAW
@@ -139,7 +137,7 @@ Mission/
 ### 1. Cloner le repo
 
 ```bash
-git clone https://github.com/el-tahiri/weather-data-pipeline-dbt-postgres-aws.git
+git clone https://github.com/NizarTAHIRI11/weather-data-pipeline-dbt-postgres-aws.git
 cd weather-data-pipeline-dbt-postgres-aws
 ```
 
@@ -295,8 +293,4 @@ dbt/weather_projet/logs/       # Logs DBT runtime
 
 ## 👤 Auteur
 
-**Nizar** — Data Engineer Trainee | Applied Mathematics Background  
-Formation **Data Engineer** — OpenClassrooms — Projet 8
-=======
-# Projrt-8-dbt
->>>>>>> 2243e0bfb43ea4e3c747c4c51b6ca54d58e92e3e
+**Nizar Tahiri** — Data Engineer Trainee | Applied Mathematics Background
